@@ -10,7 +10,13 @@ import { User } from '../user';
 export class InputFormService {
 
   storeUser (user: User): Observable<User> {
-      return this.http.post<User>('localhost:8000/storeUser', user);
+    console.log('inside storeUser');
+    return this.http.post<User>('http://localhost:3000/api/storeUser', user);
+  }
+
+  searchUserById(userId: number): Observable<User> {
+    console.log('inside searchUser');
+    return this.http.get<User>('http://localhost:3000/api/user/' + userId);
   }
 
 

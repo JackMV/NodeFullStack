@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start-ng": "ng serve --proxy-config proxy-conf.json",
+    "start-srv": "node ./src/server/bin/www",
+    "build": "ng build --output-path=./src/server/public/javascripts",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -22,7 +23,15 @@
     "@angular/router": "^6.1.0",
     "core-js": "^2.5.4",
     "rxjs": "^6.2.2",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "morgan": "~1.9.0",
+    "cors": "~2.8.4",
+    "mongoose": "5.x.x"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",

@@ -12,19 +12,24 @@ export class InputFormComponent implements OnInit {
 
   constructor(private inputFormService: InputFormService) { }
 
-  user: User = new User();
-
-  // user = {
-  //   name:"",
-  //   id:0
-  // };
+  user: User = {};
 
   storeUser() {
-      this.inputFormService.storeUser(this.user).subscribe(
-          user => {
-              console.log('Successfully saved user ' + user.id + ' to database');
-          }
-      );
+    console.log(this.user);
+    this.inputFormService.storeUser(this.user).subscribe(
+        user => {
+            console.log('Successfully saved user ' + user.id + ' to database');
+        }
+    );
+  }
+
+  userIdSearch: number;
+  searchUserById() {
+    this.inputFormService.searchUserById(this.userIdSearch).subscribe(
+      user => {
+        console.log(user);
+      }
+    );
   }
 
   ngOnInit() {

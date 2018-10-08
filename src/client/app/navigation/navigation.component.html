@@ -1,0 +1,18 @@
+<nav class='navbar navbar-light bg-light justify-content-between'>
+  <div>
+    <ul class='navbar-nav navbar-expand mr-auto'>
+      <li class='nav-item mr-sm-1'><a routerLink='/'>Home</a></li>
+      <li class='nav-item mr-sm-1'><a routerLink='/about'>About</a></li>
+      <li class='nav-item mr-sm-1'><a routerLink='/projects'>Projects</a></li>
+      <li class='nav-item mr-sm-1'><a routerLink='/other'>Other</a></li>
+    </ul>
+  </div>
+  <div>
+    <form class='form-inline'>
+      <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label='username'>
+      <input class='form-control mr-sm-2' type='password' placeholder='Password' aria-label='password'>
+      <button class='btn btn-outline-primary mr-sm-2' type='button' (click)='login()'>Login</button>
+      <button class='btn btn-outline-secondary mr-sm-2' type='button' (click)='register()'>Register</button>
+    </form>
+  </div>
+</nav>
