@@ -8,23 +8,29 @@ import { AppComponent } from './app.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { InputFormService } from './services/input-form.service';
+import { AboutMeComponent } from './about-me/about-me.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { OtherInfoComponent } from './other-info/other-info.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputFormComponent,
-    NavigationComponent
+    NavigationComponent,
+    AboutMeComponent,
+    ProjectsComponent,
+    OtherInfoComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: InputFormComponent }
-      // { path: 'about', component: AboutMeComponent },
-      // { path: 'projects', component: ProjectsComponent },
-      // { path: 'other', component: OtherComponent }
-    ]);
+      { path: '', component: InputFormComponent },
+      { path: 'about', component: AboutMeComponent },
+      { path: 'projects', component: ProjectsComponent },
+      { path: 'other', component: OtherInfoComponent }
+    ])
   ],
   providers: [InputFormService],
   bootstrap: [AppComponent]
