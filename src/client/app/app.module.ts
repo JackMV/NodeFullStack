@@ -7,10 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { InputFormComponent } from './input-form/input-form.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { InputFormService } from './services/input-form.service';
 import { AboutMeComponent } from './about-me/about-me.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { OtherInfoComponent } from './other-info/other-info.component';
+
+import { InputFormService } from './services/input-form.service';
+import { LoginService } from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,10 @@ import { OtherInfoComponent } from './other-info/other-info.component';
       { path: 'other', component: OtherInfoComponent }
     ])
   ],
-  providers: [InputFormService],
+  providers: [
+    InputFormService,
+    LoginService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

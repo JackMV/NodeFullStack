@@ -9,8 +9,8 @@
   </div>
   <div>
     <form class='form-inline'>
-      <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label='username'>
-      <input class='form-control mr-sm-2' type='password' placeholder='Password' aria-label='password'>
+      <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label='username' name='username' [(ngModel)]='user.username'>
+      <input class='form-control mr-sm-2' type='password' placeholder='Password' aria-label='password' name='password' [(ngModel)]='user.password'>
       <button class='btn btn-outline-primary mr-sm-2' type='button' (click)='login()'>Login</button>
       <button class='btn btn-outline-secondary mr-sm-2' type='button' (click)='register()'>Register</button>
     </form>

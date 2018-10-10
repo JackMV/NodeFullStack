@@ -15,8 +15,8 @@ const api = require('./routes/api');
 
 var app = express();
 
-app.set('view engine', 'jade');
-app.set('views', path.join(__dirname, 'views'));
+// app.set('view engine', 'jade');
+// app.set('views', path.join(__dirname, 'views'));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -47,7 +47,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  // res.send(err.message);
+  console.log(err.message);
 });
 
 module.exports = app;

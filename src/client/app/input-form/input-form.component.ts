@@ -23,9 +23,9 @@ export class InputFormComponent implements OnInit {
     );
   }
 
-  userIdSearch: number;
+  searchId: number;
   searchUserById() {
-    this.inputFormService.searchUserById(this.userIdSearch).subscribe(
+    this.inputFormService.searchUserById(this.searchId).subscribe(
       user => {
         console.log(user);
       }
