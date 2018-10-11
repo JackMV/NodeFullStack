@@ -9,9 +9,9 @@ import { User } from '../user';
 })
 export class LoginService {
 
-  login (user: User): Observable<User>{
+  login (username: string, password: string): Observable<string>{
     console.log('inside login');
-    return this.http.post<User>('http://localhost:3000/api/login', user);
+    return this.http.post('http://localhost:3000/api/login', {username, password}, {responseType: 'text'});
   }
 
   register (user: User): Observable<User> {

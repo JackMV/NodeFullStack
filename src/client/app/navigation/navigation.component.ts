@@ -12,11 +12,10 @@ export class NavigationComponent implements OnInit {
 
   constructor(private loginService: LoginService) { }
 
-  private user: User = {};
-
-  login() {
-    this.loginService.login(this.user).subscribe(
+  login(username: string, password: string) {
+    this.loginService.login(username, password).subscribe(
       user => {
+        console.log('recieved response');
         console.log(user);
       });
   }
