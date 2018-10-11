@@ -28,12 +28,13 @@ router.get('/user/:id', (req, res, next) => {
 
 router.post('/login', (req, res, next) => {
   console.log('logging in');
-  console.log('request' + req.params.password);
-  let user = userModel.find({'name':req.params.username}, 'username password userGroup', function (err, responseUser) {
+  console.log(req.body.username);
+  let user = userModel.findOne({'username':req.body.username}, 'username password userGroup', function (err, responseUser) {
     if (err) return handleEerror(err);
+    console.log(responseUser);
     console.log('pwd from db: ' + responseUser.password);
-    console.log('input pwd: ' + req.params.password);
-    if (responseUser.password === req.params.password) {
+    console.log('input pwd: ' + req.body.password);
+    if (responseUser.password === req.body.password) {
       responseUser.password = '';
       res.send(responseUser);
     } else {
