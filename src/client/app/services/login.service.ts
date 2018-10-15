@@ -11,7 +11,7 @@ export class LoginService {
 
   login (username: string, password: string): Observable<string>{
     console.log('inside login');
-    return this.http.post('http://localhost:3000/api/login', {username, password}, {responseType: 'text'});
+    return this.http.post('http://localhost:3000/api/login', {username, password}, {responseType: 'text', withCredentials: true});
   }
 
   register (user: User): Observable<User> {

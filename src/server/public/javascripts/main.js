@@ -320,7 +320,7 @@ module.exports = ".currentlyActiveLink{\r\n  color:white;\r\n}\r\n"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<nav class='navbar navbar-light bg-light justify-content-between bg-dark'>\n  <div>\n    <ul class='navbar-nav navbar-expand nav-pill mr-auto'>\n      <a routerLink='/' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mr-sm-2'>Home</li></a>\n      <a routerLink='/about' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>About</li></a>\n      <a routerLink='/projects' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>Projects</li></a>\n      <a routerLink='/other' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>Other</li></a>\n    </ul>\n  </div>\n  <div>\n    <form class='form-inline'>\n      <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label='username' name='username' [(ngModel)]='user.username'>\n      <input class='form-control mr-sm-2' type='password' placeholder='Password' aria-label='password' name='password' [(ngModel)]='user.password'>\n      <button class='btn btn-outline-primary mr-sm-2' type='button' (click)='login()'>Login</button>\n      <button class='btn btn-outline-secondary mr-sm-2' type='button' (click)='register()'>Register</button>\n    </form>\n  </div>\n</nav>\n"
+module.exports = "<nav class='navbar navbar-light bg-light justify-content-between bg-dark'>\n  <div>\n    <ul class='navbar-nav navbar-expand nav-pill mr-auto'>\n      <a routerLink='/' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mr-sm-2'>Home</li></a>\n      <a routerLink='/about' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>About</li></a>\n      <a routerLink='/projects' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>Projects</li></a>\n      <a routerLink='/other' routerLinkActive='currentlyActiveLink' class='text-secondary'><li class='nav-item mx-sm-2'>Other</li></a>\n    </ul>\n  </div>\n  <div>\n    <form class='form-inline'>\n      <input class='form-control mr-sm-2' type='text' placeholder='Username' aria-label='username' name='username' [(ngModel)]='username'>\n      <input class='form-control mr-sm-2' type='password' placeholder='Password' aria-label='password' name='password' [(ngModel)]='password'>\n      <button class='btn btn-outline-primary mr-sm-2' type='button' (click)='login(username, password)'>Login</button>\n      <button class='btn btn-outline-secondary mr-sm-2' type='button' (click)='register()'>Register</button>\n    </form>\n  </div>\n</nav>\n"
 
 /***/ }),
 
@@ -350,10 +350,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var NavigationComponent = /** @class */ (function () {
     function NavigationComponent(loginService) {
         this.loginService = loginService;
-        this.user = {};
     }
-    NavigationComponent.prototype.login = function () {
-        this.loginService.login(this.user).subscribe(function (user) {
+    NavigationComponent.prototype.login = function (username, password) {
+        this.loginService.login(username, password).subscribe(function (user) {
+            console.log('recieved response');
             console.log(user);
         });
     };
@@ -575,9 +575,9 @@ var LoginService = /** @class */ (function () {
     function LoginService(http) {
         this.http = http;
     }
-    LoginService.prototype.login = function (user) {
+    LoginService.prototype.login = function (username, password) {
         console.log('inside login');
-        return this.http.post('http://localhost:3000/api/login', user);
+        return this.http.post('http://localhost:3000/api/login', { username: username, password: password }, { responseType: 'text', withCredentials: true });
     };
     LoginService.prototype.register = function (user) {
         console.log('inside register');
